@@ -2,6 +2,20 @@ import React, { Component } from 'react'
 import List from './List'
 import Header from './header/Header'
 import Tech from './header/Tech'
+import { Query } from 'react-apollo';
+import { gql } from 'apollo-boost';
+
+const GET_PEOPLE = gql`
+  {
+    people {
+      name,
+      height,
+      homeworld {
+        name
+      }
+    }
+  }
+`;
 
 export default class App extends Component {
   render() {
@@ -22,6 +36,19 @@ export default class App extends Component {
           />
         </Header>
         {/* Display list of fetched data */}
+
+        <Query query={GET_PEOPLE}>
+          {
+            ({loading, data, err}) => {
+              if (loading) {
+                return <div>Loading...</div>
+              } else {
+                console.log(data);
+                return <List list={data.people} />
+              }
+            } 
+          }
+        </Query>
       </div>
     )
   }

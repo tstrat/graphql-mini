@@ -9,11 +9,11 @@ export default class Card extends Component {
         <p>{this.props.height}</p>
         <br />
         <h4>Homeworld</h4>
-        <p>{this.props.homeWorld.name}</p>
+        <p>{this.props.homeworld.name}</p>
         <br />
-        <h4>Number of Films</h4>
+        {/* <h4>Number of Films</h4>
         <p>{this.props.films.length}</p>
-        <br />
+        <br /> */}
         { /* Delete */ }
       </div>
     )
